@@ -22,19 +22,17 @@ public class Stats extends JFrame implements ActionListener{
     int gamble = 0;
     
     JFrame Canva;
-    JButton Regresar, log, logUni, Users, ranking;
+    JButton Regresar, log, logUni, Users, ranking, general;
     JPanel Caja;
     JTable Data;
-    int loop, bucle, temp;
     String rep;
+    int loop, bucle, temp, wins, lost, heroes, villains;
     DefaultTableModel model;
     private void DataEast(){
         //Data getter
         for (loop=0; loop < datos.getUsernames().size();loop++){
             if (datos.getUsernames().get(loop).equals(datos.getUser(""))){
                 gamble = loop;
-                System.out.println("User: ");
-                System.out.println(datos.getUser(""));
             }
         }
         
@@ -145,6 +143,7 @@ public class Stats extends JFrame implements ActionListener{
             }
         }
         Data = new JTable(model);
+        Data.setEnabled(false);
         Data.setBounds(335, 55, 290, 320);
         //User's log
         log = new JButton();
@@ -152,28 +151,35 @@ public class Stats extends JFrame implements ActionListener{
         log.addActionListener(this);
         log.setText("User's log");
         log.setFont(new Font("Lucida Bright",3,12));
-        log.setBounds(335, 10, 72, 40);
+        log.setBounds(335, 10, 58, 40);
         //User's log
         logUni = new JButton();
         
         logUni.addActionListener(this);
         logUni.setText("total log");
         logUni.setFont(new Font("Lucida Bright",3,12));
-        logUni.setBounds(407, 10, 72, 40);
+        logUni.setBounds(393, 10, 58, 40);
         //User's log
         Users = new JButton();
         
         Users.addActionListener(this);
         Users.setText("Users");
         Users.setFont(new Font("Lucida Bright",3,12));
-        Users.setBounds(479, 10, 72, 40);
+        Users.setBounds(451, 10, 58, 40);
         //Ranking log
         ranking = new JButton();
         
         ranking.addActionListener(this);
         ranking.setText("Ranking");
         ranking.setFont(new Font("Lucida Bright",3,12));
-        ranking.setBounds(551, 10, 74, 40);
+        ranking.setBounds(509, 10, 58, 40);
+        //General data
+        general = new JButton();
+        
+        general.addActionListener(this);
+        general.setText("General");
+        general.setFont(new Font("Lucida Bright",3,12));
+        general.setBounds(567, 10, 58, 40);        
         //Adicion de complementos
         Canva.add(Caja);
         Caja.add(Sep);
@@ -191,6 +197,7 @@ public class Stats extends JFrame implements ActionListener{
         Caja.add(logUni);
         Caja.add(Users);
         Caja.add(ranking);
+        Caja.add(general);
         
         Canva.setVisible(true);
     }
@@ -204,11 +211,53 @@ public class Stats extends JFrame implements ActionListener{
         }
         
         if (e.getSource()==log){
-            
+            model.addColumn("Log");
+            model.addRow(new Object[] {"User's log"});
+            for (loop=0; loop < datos.getLog().size();loop++){
+                if (datos.getLog().get(loop).contains(datos.getUser("").toUpperCase())){
+                    model.addRow(new Object[] {datos.getLog().get(loop)});
+                }
+            }
+        }
+        
+        if (e.getSource()==general){
+            temp = 0;
+            wins = 0;
+            lost = 0;
+            heroes = 0;
+            villains = 0;
+            model.addColumn("request");
+            model.addColumn("info");
+            model.addRow(new Object[] {"Amount of active players: ",datos.getUsernames().size()-1});
+            model.addRow(new Object[] {"Amount of deleted players: ",datos.getTaken().size()});
+            model.addRow(new Object[] {"Amount of historical players: ",(datos.getTaken().size()+datos.getUsernames().size()-1)});
+            for (loop=0;loop<datos.getWins().size();loop++){
+                wins += datos.getWins().get(loop);
+                temp += datos.getWins().get(loop);
+            }
+            model.addRow(new Object[] {"Matches won: ", wins});
+            for (loop=0;loop<datos.getLosses().size();loop++){
+                lost += datos.getLosses().get(loop);
+                temp += datos.getLosses().get(loop);
+            }
+            model.addRow(new Object[] {"Matches lost: ", lost});
+            for (loop=0; loop < datos.getHeroes().size();loop++){
+                heroes += datos.getHeroes().get(loop);
+            }
+            model.addRow(new Object[] {"Matches played as heroes: ",heroes});
+            for (loop=0; loop < datos.getVillanos().size();loop++){
+                villains += datos.getHeroes().get(loop);
+            }
+            model.addRow(new Object[] {"Matches played as villains: ",villains});
+            model.addRow(new Object[] {"Total matches played",(temp/2)});
         }
         
         if (e.getSource()==logUni){
-            
+            model.addColumn("Log");
+            model.addRow(new Object[] {"Universal log"});
+            for (loop=0; loop < datos.getLog().size();loop++){
+                model.addRow(new Object[] {datos.getLog().get(loop)});
+            }
         }
         
         if (e.getSource()==Users ) {

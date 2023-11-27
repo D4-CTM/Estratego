@@ -14,12 +14,6 @@ public class Projecto2_Grupo2 {
         dato.setChange(false);
         
         new MainScene(dato).setVisible(false);
-
-        //Eye1 proportion - 1080x803
-        //Eye2 proportion - 1080x612
-        //Backsign proportion - 1080x736
-        //Account setting proportio - 1080x662
-        
     }
 
 }

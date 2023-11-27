@@ -232,7 +232,7 @@ public class MainScene extends JFrame implements ActionListener{
         if (e.getSource()==Registro){
             Canva.dispose();
             datos.setChange(false);
-            new LogoReg(datos.getUsernames(), datos.getNames(), datos.getPasses()).setVisible(false);
+            new LogoReg(datos.getUsernames(), datos.getPasses()).setVisible(false);
         }
     }
     

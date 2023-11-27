@@ -5,6 +5,20 @@ import java.util.ArrayList;
 public class Datardos {
 
     /**
+     * @return the log
+     */
+    public ArrayList <String> getLog() {
+        return log;
+    }
+
+    /**
+     * @param log the log to set
+     */
+    public void setLog(ArrayList <String> log) {
+        this.log = log;
+    }
+
+    /**
      * @return the MirrorUsernames
      */
     public ArrayList<String> getMirrorUsernames() {
@@ -160,20 +174,6 @@ public class Datardos {
     }
 
     /**
-     * @return the Names
-     */
-    public ArrayList<String> getNames() {
-        return Names;
-    }
-
-    /**
-     * @param Names the Names to set
-     */
-    public void setNames(ArrayList<String> Names) {
-        this.Names = Names;
-    }
-
-    /**
      * @return the Passes
      */
     public ArrayList<String> getPasses() {
@@ -230,10 +230,10 @@ public class Datardos {
     }
     
     public static ArrayList<String> Usernames = new ArrayList();
-    public static ArrayList<String> Names = new ArrayList();
     public static ArrayList<String> Passes = new ArrayList();
     public static ArrayList<String> Taken = new ArrayList();
     public static ArrayList<String> MirrorUsernames = new ArrayList();
+    public static ArrayList<String> log = new ArrayList();
     public static ArrayList<Integer> Puntos = new ArrayList();
     public static ArrayList<Integer> MirrorPuntos = new ArrayList();
     public static ArrayList<Integer> Losses = new ArrayList();
@@ -242,13 +242,10 @@ public class Datardos {
     public static ArrayList<Integer> Villanos = new ArrayList();
     public static String user;
     public static String user2;
-    public static String oponent;
     public static String faltante;
     public static boolean practice;
-    public static boolean selected;
-    public static boolean start;
-    public static boolean change;
-    
+    public static boolean selected; //Usado para identificar el bando (true si el user1 eligio ser un heroe o villano)
+    public static boolean change;   //Usado para separar el log in del primer player del segundo y no manda accidentalmente al pibe a una match
     
     /**
      * @param string the value of string
@@ -264,33 +261,5 @@ public class Datardos {
     public void setFaltante(String faltante) {
         this.faltante = faltante;
     }
-
-    /**
-     * @param string the value of string
-     * @return the java.lang.String
-     */
-    public String getOponent(String string) {
-        return oponent;
-    }
-
-    /**
-     * @param oponent the oponent to set
-     */
-    public void setOponent(String oponent) {
-        this.oponent = oponent;
-    }
     
-    /**
-     * @return the start
-     */
-    public boolean isStart() {
-        return start;
-    }
-
-    /**
-     * @param start the start to set
-     */
-    public void setStart(boolean start) {
-        this.start = start;
-    }
 }

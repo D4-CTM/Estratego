@@ -10,7 +10,6 @@ public class Projecto2_Grupo2 {
         dato.setUser("Guest");
         dato.getMirrorUsernames().add("Guest");
         dato.getUsernames().add("Guest");
-        dato.getNames().add("Guest");
         dato.getPasses().add("");
         dato.getWins().add(0);
         dato.getLosses().add(0);

@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 public class LogoReg extends JFrame implements ActionListener{
     Datardos datos = new Datardos();
     
-    public LogoReg(ArrayList<String> usernames, ArrayList<String> names, ArrayList<String> passes){        
+    public LogoReg(ArrayList<String> usernames, ArrayList<String> passes){        
         Canva();
     }
     
@@ -63,7 +63,7 @@ public class LogoReg extends JFrame implements ActionListener{
         //Name
         Name = new JLabel();
         
-        Name.setText(datos.getNames().get(gamble));
+        Name.setText(datos.getUsernames().get(gamble));
         Name.setForeground(Color.white);
         Name.setFont(new Font("Lucida Bright",3,40));
         Name.setBounds(525, 70, 250, 50);
@@ -231,7 +231,6 @@ public class LogoReg extends JFrame implements ActionListener{
                 
                 datos.getMirrorUsernames().remove(gamble);
                 datos.getUsernames().remove(gamble);
-                datos.getNames().remove(gamble);
                 datos.getPasses().remove(gamble);
                 datos.getWins().remove(gamble);
                 datos.getLosses().remove(gamble);

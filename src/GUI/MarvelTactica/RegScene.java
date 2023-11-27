@@ -23,7 +23,7 @@ public class RegScene extends JFrame implements ActionListener{
     }
     
     JFrame Canva;
-    JTextField User, Username;
+    JTextField Username;
     JPasswordField Pass;
     JButton BTNRegister, BTNCancel, BTNReveal;
     
@@ -34,7 +34,7 @@ public class RegScene extends JFrame implements ActionListener{
         Canva = new JFrame();
         
         Canva.setIconImage(new javax.swing.ImageIcon(getClass().getResource("Icons\\Icon.png")).getImage());
-        Canva.setSize(500,310);
+        Canva.setSize(500,260);
         Canva.setTitle("Registration form");
         Canva.setResizable(false);
         Canva.setLocationRelativeTo(null);
@@ -52,36 +52,26 @@ public class RegScene extends JFrame implements ActionListener{
         UpperText.setBounds(100,15,350,35);
         UpperText.setText("Account registration");
         UpperText.setForeground(Color.white);
-        //User info
-        User = new JTextField();
-        JLabel txtUsername = new JLabel();
-        
-        txtUsername.setFont(new Font("Lucida Bright",3,18));
-        txtUsername.setBounds(25,65,350,35);
-        txtUsername.setText("NAME: ");
-        txtUsername.setForeground(Color.white);
-        User.setFont(new Font("Lucida Bright",0,16));
-        User.setBounds(145, 65, 315, 35);
         //Username info
         Username = new JTextField();
         JLabel txtUser = new JLabel();
         
         txtUser.setFont(new Font("Lucida Bright",3,18));
-        txtUser.setBounds(25,115,350,35);
+        txtUser.setBounds(25,65,350,35);
         txtUser.setText("USERNAME: ");
         txtUser.setForeground(Color.white);
         Username.setFont(new Font("Lucida Bright",0,16));
-        Username.setBounds(145, 115, 315, 35);
+        Username.setBounds(145, 65, 315, 35);
         //Pass info
         Pass = new JPasswordField();
         JLabel txtPass = new JLabel();
         
         txtPass.setFont(new Font("Lucida Bright",3,18));
-        txtPass.setBounds(25,165,350,35);
+        txtPass.setBounds(25,115,350,35);
         txtPass.setText("PASSWORD: ");
         txtPass.setForeground(Color.white);
         Pass.setFont(new Font("Lucida Bright",0,16));
-        Pass.setBounds(145, 165, 265, 35);
+        Pass.setBounds(145, 115, 265, 35);
         //Boton revelar contrasegna        
         ImageIcon image = new ImageIcon(getClass().getResource("Icons\\eye.png"));
         Image Scaleimage = image.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -90,28 +80,26 @@ public class RegScene extends JFrame implements ActionListener{
         
         BTNReveal.setIcon(Eye);
         BTNReveal.addActionListener(this);
-        BTNReveal.setBounds(425,165,35,35);
+        BTNReveal.setBounds(425,115,35,35);
         //Boton registrar
         BTNRegister = new JButton();
         
         BTNRegister.addActionListener(this);
         BTNRegister.setText("Create account");
         BTNRegister.setFont(new Font("Lucida Bright",3,20));
-        BTNRegister.setBounds(25,215,210,40);
+        BTNRegister.setBounds(25,165,210,40);
         //Boton cancelar
         BTNCancel = new JButton();
         
         BTNCancel.addActionListener(this);
         BTNCancel.setText("cancel");
         BTNCancel.setFont(new Font("Lucida Bright",3,22));
-        BTNCancel.setBounds(250,215,210,40);
+        BTNCancel.setBounds(250,165,210,40);
         //adicion de complementos
         Canva.add(Caja);
         Caja.add(txtUser);
-        Caja.add(User);
         Caja.add(UpperText);
         Caja.add(Username);
-        Caja.add(txtUsername);
         Caja.add(Pass);
         Caja.add(txtPass);
         Caja.add(BTNReveal);
@@ -139,13 +127,12 @@ public class RegScene extends JFrame implements ActionListener{
         }
         
         if (e.getSource() == BTNRegister){                  
-            if (Pass.getText().length() >= 5 && Pass.getText().matches("[\\d\\w]+") && Pass.getText().charAt(0) == Pass.getText().toUpperCase().charAt(0) && User.getText().matches("[\\w\\d\\s]*") && Username.getText().isBlank() == false){
+            if (Pass.getText().length() >= 5 && Pass.getText().matches("[\\d\\w]+") && Pass.getText().charAt(0) == Pass.getText().toUpperCase().charAt(0) && Username.getText().isBlank() == false){
                 int tamagno = datos.getUsernames().size();
                 for (int loop = 0; loop < tamagno; loop++){
                     if (!Username.getText().equals(datos.getUsernames().get(loop)) && (loop == datos.getUsernames().size() - 1)){
                         datos.getUsernames().add(Username.getText());
                         datos.getMirrorUsernames().add(Username.getText());
-                        datos.getNames().add(User.getText());
                         datos.getPasses().add(Pass.getText());
                         datos.getWins().add(0);
                         datos.getLosses().add(0);

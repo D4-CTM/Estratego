@@ -153,10 +153,8 @@ public class LogScene extends JFrame implements ActionListener{
                                 datos.getHeroes().set(loop, change);
                             }
                             
-                            Espacio.dispose();              
-                            datos.setStart(false);
-                            datos.setOponent("Heroe");
-                            new Map(datos).setVisible(false);
+                            Espacio.dispose();
+                            new NeoMap(datos).setVisible(false);
                             loop = datos.getUsernames().size() + 2;
                         } else System.out.println("Contra incorrecta");
                     }

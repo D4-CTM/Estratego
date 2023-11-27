@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="4">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="34">
         <file>
             <url>src/GUI/MarvelTactica/Map.java</url>
-            <bookmark id="3">
+            <bookmark id="11">
                 <name/>
-                <line>61</line>
+                <line>49</line>
                 <key/>
             </bookmark>
-            <bookmark id="4">
+            <bookmark id="16">
                 <name/>
-                <line>460</line>
+                <line>93</line>
+                <key/>
+            </bookmark>
+            <bookmark id="17">
+                <name/>
+                <line>179</line>
+                <key/>
+            </bookmark>
+            <bookmark id="12">
+                <name/>
+                <line>225</line>
+                <key/>
+            </bookmark>
+            <bookmark id="8">
+                <name/>
+                <line>442</line>
+                <key/>
+            </bookmark>
+            <bookmark id="13">
+                <name/>
+                <line>574</line>
+                <key/>
+            </bookmark>
+            <bookmark id="24">
+                <name/>
+                <line>718</line>
+                <key/>
+            </bookmark>
+            <bookmark id="14">
+                <name/>
+                <line>737</line>
+                <key/>
+            </bookmark>
+            <bookmark id="25">
+                <name/>
+                <line>933</line>
+                <key/>
+            </bookmark>
+            <bookmark id="15">
+                <name/>
+                <line>947</line>
                 <key/>
             </bookmark>
         </file>
@@ -19,6 +59,14 @@
             <bookmark id="2">
                 <name/>
                 <line>126</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/GUI/MarvelTactica/Stats.java</url>
+            <bookmark id="31">
+                <name/>
+                <line>28</line>
                 <key/>
             </bookmark>
         </file>
@@ -33,7 +81,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/projecto2_grupo2/Projecto2_Grupo2.java</file>
+            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/BandChoose.java</file>
             <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/MainScene.java</file>
         </group>
     </open-files>
