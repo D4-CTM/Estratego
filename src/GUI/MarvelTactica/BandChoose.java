@@ -1,5 +1,4 @@
 package GUI.MarvelTactica;
-
 import Datos.Datardos;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,9 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 public class BandChoose extends JFrame implements ActionListener{
-    Datardos datos = new Datardos();
+Datardos datos = new Datardos();
     
     public BandChoose(Datardos datos){
         Elector();
