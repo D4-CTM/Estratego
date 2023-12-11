@@ -91,7 +91,7 @@ public class Stats extends JFrame implements ActionListener{
         //second uppertext
         JLabel played = new JLabel();
         
-        played.setText("Matches played as: "); 
+        played.setText("Matches won as: "); 
         played.setForeground(Color.white);
         played.setBounds(0, 185, 325, 45);  
         played.setVerticalAlignment(JLabel.CENTER);
@@ -216,6 +216,7 @@ public class Stats extends JFrame implements ActionListener{
             for (loop=0; loop < datos.getLog().size();loop++){
                 if (datos.getLog().get(loop).contains(datos.getUser("").toUpperCase())){
                     model.addRow(new Object[] {datos.getLog().get(loop)});
+                    System.out.println(datos.getLog().get(loop));
                 }
             }
         }

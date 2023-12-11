@@ -1,7 +1,6 @@
 package GUI.MarvelTactica;
 
 import Datos.Datardos;
-import Pop_Ups.Incomplete_Data;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -15,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -29,7 +29,7 @@ public class MainScene extends JFrame implements ActionListener{
     int BI;
     JFrame Canva;
     BufferedImage BCKG, Play, Prac;
-    JButton Jugar, Practica, Ajustes, Estadisticas, Registro;
+    JButton Jugar, Practica, Ajustes, Estadisticas, Registro, PracI, PlayI;
     private void MainMenu(){
         //JFrame general
         Canva = new JFrame();
@@ -40,7 +40,6 @@ public class MainScene extends JFrame implements ActionListener{
         Canva.setTitle("MARVEL'S STRATEGO");
         Canva.setLocationRelativeTo(null);
         Canva.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-       
         //Panel entero (todo el JFrame)
         JPanel Panel = new JPanel();
         do {
@@ -91,7 +90,9 @@ public class MainScene extends JFrame implements ActionListener{
         imagen.setBounds(25, 30, 260, 140);        
         //Panel boton juego
         JPanel PlayP = new JPanel();
-        JLabel PlayI = new JLabel(new ImageIcon(Play));
+        PlayI = new JButton();
+        PlayI.addActionListener(this);
+        PlayI.setIcon(new ImageIcon(Play));
         PlayI.setBounds(0, 0, 160, 145);        
         PlayI.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         
@@ -110,7 +111,9 @@ public class MainScene extends JFrame implements ActionListener{
         Jugar.setBounds(0,145,PlayP.getWidth(),30);        
         //Practice Panel
         JPanel PracP = new JPanel();
-        JLabel PracI = new JLabel(new ImageIcon(Prac));
+        PracI = new JButton();
+        PracI.addActionListener(this);
+        PracI.setIcon(new ImageIcon(Prac));
         PracI.setBounds(0, 0, 160, 90);
         PracI.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         
@@ -130,23 +133,23 @@ public class MainScene extends JFrame implements ActionListener{
         //Boton de Ajustes
         Ajustes = new JButton();
         
-        Ajustes.setText("SETTINGS");
+        Ajustes.setText("CLOSE GAME");
         Ajustes.addActionListener(this);
         Ajustes.setBackground(new Color(155,0,0));
         Ajustes.setForeground(new Color(239, 243, 130));
         Ajustes.setFont(new Font("Lucida Bright",3,20));
         Ajustes.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 3));
-        Ajustes.setBounds(80,525,160,30);        
+        Ajustes.setBounds(80,575,160,30);        
         //Boton de Estadisticas
         Estadisticas = new JButton(); 
         
-        Estadisticas.setText("USER DATA");
+        Estadisticas.setText("ACCOUNT");
         Estadisticas.addActionListener(this);
         Estadisticas.setBackground(new Color(155,0,0));
         Estadisticas.setForeground(new Color(239, 243, 130));
         Estadisticas.setFont(new Font("Lucida Bright",3,20));
         Estadisticas.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 3));
-        Estadisticas.setBounds(80,575,160,30);        
+        Estadisticas.setBounds(80,525,160,30);        
         //Panel de perfil
         JPanel Personal = new JPanel();
         
@@ -200,36 +203,44 @@ public class MainScene extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==Jugar && datos.getUsernames().size()>2 && !"Guest".equals(datos.getUser(""))){
+        if ((e.getSource()==Jugar || e.getSource() == PlayI) && datos.getUsernames().size()>2 && !"Guest".equals(datos.getUser(""))){
             Canva.dispose();
-            datos.setPractice(false); 
-            new BandChoose(datos).setVisible(false);      
-        } else if (e.getSource()==Jugar){
-            datos.setFaltante("Register 2 accounts to play");
-            new Incomplete_Data(datos).setVisible(false);
+            datos.setPractice(false);
+            new BandChoose(datos).setVisible(false);
+        } else if (e.getSource()==Jugar || e.getSource() == PlayI){
+            JOptionPane.showMessageDialog(Canva,"You need to register two accounts first");
+            Canva.dispose();
+            new RegScene(datos).setVisible(false);
+            if (datos.getUser("").equals("Guest"))
+                JOptionPane.showMessageDialog(Canva, "\tAccount registration parameters\nTo create the account is needed:\n- Everything to be filled\nThe password should:\n- Contain only letters and numbers\n- Have a length of 5 characters\n- Start with an upper case (if it starts with a letter)");
         }
-
-        if (e.getSource()==Practica && !"Guest".equals(datos.getUser(""))){
+        
+        if ((e.getSource()==Practica || e.getSource() == PracI)&& !"Guest".equals(datos.getUser(""))){
             Canva.dispose();
             datos.setPractice(true); 
             new BandChoose(datos).setVisible(false);
-        } else if (e.getSource()==Practica){
-            datos.setFaltante("Log in first");
-            new Incomplete_Data(datos).setVisible(false);
+        } else if (e.getSource()==Practica || e.getSource() == PracI){
+            JOptionPane.showMessageDialog(Canva,"You need to register into an account first");
+            Canva.dispose();
+            new RegScene(datos).setVisible(false);
+            if (datos.getUser("").equals("Guest"))
+                JOptionPane.showMessageDialog(Canva, "\tAccount registration parameters\nTo create the account is needed:\n- Everything to be filled\nThe password should:\n- Contain only letters and numbers\n- Have a length of 5 characters\n- Start with an upper case (if it starts with a letter)");
         }
-        
         if (e.getSource()==Ajustes){
-            
+            Canva.dispose();
         }
         
-        if (e.getSource()==Estadisticas && !"Guest".equals(datos.getUser(""))){
+        if (e.getSource()==Registro && !"Guest".equals(datos.getUser(""))){
             new Stats(datos).setVisible(false);
-        } else if (e.getSource()==Estadisticas){
-            datos.setFaltante("Log in to an account");
-            new Incomplete_Data(datos).setVisible(false);
+        } else if (e.getSource()==Registro){
+            JOptionPane.showMessageDialog(Canva,"You need to register into an account first");
+            Canva.dispose();
+            new RegScene(datos).setVisible(false);
+            if (datos.getUser("").equals("Guest"))
+                JOptionPane.showMessageDialog(Canva, "\tAccount registration parameters\nTo create the account is needed:\n- Everything to be filled\nThe password should:\n- Contain only letters and numbers\n- Have a length of 5 characters\n- Start with an upper case (if it starts with a letter)");
         }
         
-        if (e.getSource()==Registro){
+        if (e.getSource()==Estadisticas){
             Canva.dispose();
             datos.setChange(false);
             new LogoReg(datos.getUsernames(), datos.getPasses()).setVisible(false);

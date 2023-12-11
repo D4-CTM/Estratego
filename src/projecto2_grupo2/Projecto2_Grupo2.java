@@ -4,7 +4,7 @@ import Datos.Datardos;
 import GUI.MarvelTactica.MainScene;
 
 public class Projecto2_Grupo2 {
-
+    
     public static void main(String[] args) {
         Datardos dato = new Datardos();
         dato.setUser("Guest");
@@ -21,7 +21,5 @@ public class Projecto2_Grupo2 {
         dato.setChange(false);
         
         new MainScene(dato).setVisible(false);
-
     }
-
 }

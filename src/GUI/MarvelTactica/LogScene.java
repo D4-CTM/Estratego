@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -39,7 +40,10 @@ public class LogScene extends JFrame implements ActionListener{
         
         //Panel entero (todo el JFrame)
         JPanel Caja = new JPanel();
+        JLabel BCKG = new JLabel();
         
+        BCKG.setIcon(new ImageIcon(getClass().getResource("Icons\\Log.png")));
+        BCKG.setBounds(0, 0, 600, 325);        
         Caja.setLayout(null);
         Caja.setVisible(true);
         Caja.setSize(600,325);
@@ -84,12 +88,16 @@ public class LogScene extends JFrame implements ActionListener{
         BTNReveal.setIcon(Eye);
         BTNReveal.addActionListener(this);
         BTNReveal.setBounds(50,135,45,45);
-        
+        BTNReveal.setBackground(new Color(155,0,0));
+        BTNReveal.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow,2));        
         //Boton submit
         BTNSubmit = new JButton();
         
         BTNSubmit.addActionListener(this);
         BTNSubmit.setText("SUBMIT");
+        BTNSubmit.setForeground(new Color(239, 243, 130));
+        BTNSubmit.setBackground(new Color(155,0,0));
+        BTNSubmit.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         BTNSubmit.setFont(new Font("Lucida Bright",3,24));
         BTNSubmit.setBounds(50,200,225,65);
         //Boton cancelar
@@ -97,6 +105,9 @@ public class LogScene extends JFrame implements ActionListener{
         
         BTNCancel.addActionListener(this);
         BTNCancel.setText("CANCEL");
+        BTNCancel.setForeground(new Color(239, 243, 130));
+        BTNCancel.setBackground(new Color(155,0,0));
+        BTNCancel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         BTNCancel.setFont(new Font("Lucida Bright",3,24));
         BTNCancel.setBounds(300,200,225,65);
         //Adicion de complementos
@@ -109,9 +120,9 @@ public class LogScene extends JFrame implements ActionListener{
         Caja.add(BTNReveal);
         Caja.add(BTNSubmit);
         Caja.add(BTNCancel);
+        Caja.add(BCKG);
         
         Espacio.setVisible(true);   
-
     }
     
     @Override
@@ -122,26 +133,19 @@ public class LogScene extends JFrame implements ActionListener{
             } else {
                 txtPass.setEchoChar('\u2022');
             }
-            
         }
                
         if (e.getSource() == BTNSubmit){
             for (int loop=0;loop < datos.getUsernames().size(); loop++){
                 if (datos.getUsernames().get(loop).equals(txtUsername.getText())){
                     if (datos.isChange()==false){
-                        datos.setUser("");
-                        datos.setUser(txtUsername.getText());
-
                         if (datos.getPasses().get(loop).equals(txtPass.getText())){ 
-
                             Espacio.dispose();
                             new MainScene(datos).setVisible(false);
                             loop = datos.getUsernames().size() + 2;
-                        } else System.out.println("Contra incorrecta");
+                        } else JOptionPane.showMessageDialog(Espacio, "Incorrect password");
                     } else if (!datos.getUser("").equals(txtUsername.getText())){
                         datos.setUser2(txtUsername.getText());
-                        System.out.println("User - "+datos.getUser("")+"\nUser2 - "+datos.getUser2(""));
-
                         if (datos.getPasses().get(loop).equals(txtPass.getText())){
                             if (datos.isSelected()==true){
                                 change = datos.getVillanos().get(loop);
@@ -156,11 +160,9 @@ public class LogScene extends JFrame implements ActionListener{
                             Espacio.dispose();
                             new NeoMap(datos).setVisible(false);
                             loop = datos.getUsernames().size() + 2;
-                        } else System.out.println("Contra incorrecta");
+                        } else JOptionPane.showMessageDialog(Espacio, "Incorrect password");
                     }
-                } else if (loop + 1 == datos.getUsernames().size()){
-                    System.out.println("La cuenta que busca no esta registrada");
-                }
+                } else if (loop + 1 == datos.getUsernames().size()) JOptionPane.showMessageDialog(Espacio, "Incorrect Username");
             }
         }
         

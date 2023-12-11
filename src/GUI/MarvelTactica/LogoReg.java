@@ -11,50 +11,55 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LogoReg extends JFrame implements ActionListener{
+public class LogoReg extends JFrame implements ActionListener {
+
     Datardos datos = new Datardos();
-    
-    public LogoReg(ArrayList<String> usernames, ArrayList<String> passes){        
+
+    public LogoReg(ArrayList<String> usernames, ArrayList<String> passes) {
         Canva();
     }
-    
+
     JPasswordField Pass;
     JTextField Username;
     JLabel Name;
-    JButton LogIn, Register, Cancel, change, concretar, regresar, BTNReveal, DelAc;;
+    JButton LogIn, Register, Cancel, concretar, regresar, BTNReveal;
+    ;
     JFrame Canvas;
     int gamble;
-    
-    private void Canva(){
+
+    private void Canva() {
         //Data getter
-        for (int loop=0; loop < datos.getUsernames().size();loop++){
-            if (datos.getUsernames().get(loop).equals(datos.getUser(""))){
+        for (int loop = 0; loop < datos.getUsernames().size(); loop++) {
+            if (datos.getUsernames().get(loop).equals(datos.getUser(""))) {
                 gamble = loop;
             }
         }
         //main JFrame info
         Canvas = new JFrame();
-        
+
         Canvas.setIconImage(new javax.swing.ImageIcon(getClass().getResource("Icons\\Icon.png")).getImage());
         Canvas.setResizable(false);
-        Canvas.setSize(800, 410);
+        Canvas.setSize(800, 320);
         Canvas.setLocationRelativeTo(null);
         Canvas.setTitle("Account options");
-        Canvas.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);        
+        Canvas.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         //General Panel
         JPanel Caja = new JPanel();
+        JLabel BCKG = new JLabel(new javax.swing.ImageIcon(getClass().getResource("Icons\\LogoReg.png")));
         
+        BCKG.setBounds(0, 0, 800, 320);
         Caja.setLayout(null);
-        Caja.setSize(800,500);
+        Caja.setSize(800, 320);
         Caja.setBackground(Color.black);
         //Texto aclarativo
         JLabel UpperText = new JLabel();
-        
-        UpperText.setFont(new Font("Lucida Bright",3,30));
+
+        UpperText.setFont(new Font("Lucida Bright", 3, 30));
         UpperText.setBounds(0, 15, Caja.getWidth(), 35);
         UpperText.setVerticalAlignment(JLabel.CENTER);
         UpperText.setHorizontalAlignment(JLabel.CENTER);
@@ -62,86 +67,88 @@ public class LogoReg extends JFrame implements ActionListener{
         UpperText.setText("Account information");
         //Name
         Name = new JLabel();
-        
+
         Name.setText(datos.getUsernames().get(gamble));
         Name.setForeground(Color.white);
-        Name.setFont(new Font("Lucida Bright",3,40));
+        Name.setFont(new Font("Lucida Bright", 3, 40));
         Name.setBounds(525, 70, 250, 50);
         //Username
         Username = new JTextField();
-        
+
         Username.setText(datos.getUsernames().get(gamble));
         Username.setForeground(Color.gray);
         Username.setEditable(false);
-        Username.setFont(new Font("Lucida Bright",3,22));
+        Username.setFont(new Font("Lucida Bright", 3, 22));
         Username.setBounds(50, 70, 450, 50);
         //Pass
         Pass = new JPasswordField();
-        
-        Pass.setText(datos.getPasses().get(gamble)); 
+
+        Pass.setText(datos.getPasses().get(gamble));
         Pass.setForeground(Color.gray);
         Pass.setEditable(false);
-        Pass.setFont(new Font("Lucida Bright",3,22));
+        Pass.setFont(new Font("Lucida Bright", 3, 22));
         Pass.setBounds(50, 145, 375, 50);
         //Boton revelar contrasegna
         ImageIcon image = new ImageIcon(getClass().getResource("Icons\\eye.png"));
         Image Scaleimage = image.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
         ImageIcon Eye = new ImageIcon(Scaleimage);
         BTNReveal = new JButton();
-        
+
+        BTNReveal.setBackground(new Color(155, 0, 0));
         BTNReveal.addActionListener(this);
         BTNReveal.setIcon(Eye);
-        BTNReveal.setBounds(450,145,50,50);
+        BTNReveal.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 2));
+        BTNReveal.setBounds(450, 145, 50, 50);
         //Boton Log in
         LogIn = new JButton();
-        
+
         LogIn.addActionListener(this);
-        LogIn.setFont(new Font("Lucida Bright",3,28));
-        LogIn.setBounds(525,70,225,50);
+        LogIn.setForeground(new Color(239, 243, 130));
+        LogIn.setBackground(new Color(155, 0, 0));
+        LogIn.setFont(new Font("Lucida Bright", 3, 28));
+        LogIn.setBounds(525, 70, 225, 50);
+        LogIn.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         LogIn.setText("Log in");
         //Boton Registro
         Register = new JButton();
-        
+
         Register.addActionListener(this);
-        Register.setFont(new Font("Lucida Bright",3,28));
-        Register.setBounds(525,145,225,50);
+        Register.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
+        Register.setForeground(new Color(239, 243, 130));
+        Register.setBackground(new Color(155, 0, 0));
+        Register.setFont(new Font("Lucida Bright", 3, 28));
+        Register.setBounds(525, 145, 225, 50);
         Register.setText("Registration");
-        //boton de cambiar datos
-        change = new JButton();
-        
-        change.addActionListener(this);
-        change.setFont(new Font("Lucida Bright",3,28));
-        change.setBounds((Caja.getWidth()/2)-200,220,400,50);
-        change.setText("Edit data");
-        //boton 'cancelar cambios'
+        //boton 'Concretar cambios'
         concretar = new JButton();
-        
+
         concretar.addActionListener(this);
-        concretar.setFont(new Font("Lucida Bright",3,28));
-        concretar.setBounds(50,220,300,50);
-        concretar.setText("Save new data");
-        //boton 'aceptar cambios'
+        concretar.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
+        concretar.setForeground(new Color(239, 243, 130));
+        concretar.setBackground(new Color(155, 0, 0));
+        concretar.setFont(new Font("Lucida Bright", 3, 28));
+        concretar.setBounds(50, 220, 300, 50);
+        concretar.setText("Change data");
+        //boton 'Cancelar cambios'
         regresar = new JButton();
-        
+
         regresar.addActionListener(this);
-        regresar.setFont(new Font("Lucida Bright",3,28));
-        regresar.setBounds(450,220,300,50);
-        regresar.setText("cancel");
-        
+        regresar.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
+        regresar.setForeground(new Color(239, 243, 130));
+        regresar.setBackground(new Color(155, 0, 0));
+        regresar.setFont(new Font("Lucida Bright", 3, 28));
+        regresar.setBounds(450, 220, 300, 50);
+        regresar.setText("Delete account");
         //Boton de regresar
         Cancel = new JButton();
-        
+
         Cancel.addActionListener(this);
-        Cancel.setFont(new Font("Lucida Bright",3,22));
-        Cancel.setBounds(0,0,45,45);
+        Cancel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
+        Cancel.setForeground(new Color(239, 243, 130));
+        Cancel.setBackground(new Color(155, 0, 0));
+        Cancel.setFont(new Font("Lucida Bright", 3, 22));
+        Cancel.setBounds(0, 0, 45, 45);
         Cancel.setText("«");
-        //boton eliminar cuenta
-        DelAc = new JButton();
-        
-        DelAc.addActionListener(this);
-        DelAc.setText("Delete account");
-        DelAc.setFont(new Font("Lucida Bright",3,30));
-        DelAc.setBounds((Caja.getWidth()/2)-250,290,500,60);
         //Adicion de Opciones
         Caja.add(UpperText);
         Caja.add(LogIn);
@@ -150,100 +157,76 @@ public class LogoReg extends JFrame implements ActionListener{
         Caja.add(Username);
         Caja.add(Pass);
         Caja.add(BTNReveal);
-        Caja.add(change);
         Caja.add(concretar);
         Caja.add(regresar);
-        Caja.add(DelAc);
-        
-        regresar.setVisible(false);
-        concretar.setVisible(false);
+        Caja.add(BCKG);
         
         Canvas.add(Caja);
         Canvas.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == LogIn){
+        if (e.getSource() == LogIn) {
+            datos.setChange(false);
             new LogScene(datos).setVisible(false);
             Canvas.dispose();
-        } else if (e.getSource() == Register){
+        } else if (e.getSource() == Register) {
             new RegScene(datos).setVisible(false);
             Canvas.dispose();
-        } else if (e.getSource() == Cancel){
+            if (datos.getUser("").equals("Guest"))
+                JOptionPane.showMessageDialog(Canvas, "\tAccount registration parameters\nTo create the account is needed:\n- Everything to be filled\nThe password should:\n- Contain only letters and numbers\n- Have a length of 5 characters\n- Start with an upper case (if it starts with a letter)");
+        } else if (e.getSource() == Cancel) {
             Canvas.dispose();
             new MainScene(datos).setVisible(false);
-        } else if (e.getSource()==BTNReveal && Pass.echoCharIsSet()){
-            Pass.setEchoChar((char)0);            
-        } else if (e.getSource()==BTNReveal && Pass.echoCharIsSet()==false){
+        } else if (e.getSource() == BTNReveal && Pass.echoCharIsSet()) {
+            Pass.setEchoChar((char) 0);
+        } else if (e.getSource() == BTNReveal && Pass.echoCharIsSet() == false) {
             Pass.setEchoChar('\u2022');
-        } else if (e.getSource()==change&&(!"Guest".equals(datos.getUser("")))){
-            change.setVisible(false);
-            Pass.setEditable(true);
-            Pass.setForeground(Color.black);
-            Username.setEditable(true);
-            Username.setForeground(Color.black);
-            regresar.setVisible(true);
-            concretar.setVisible(true);
-        } else if ((e.getSource()==concretar||e.getSource()==regresar)){
-            if (e.getSource()==concretar && Pass.getText().length()>=5){
-                for (int loop = 0; loop < datos.getUsernames().size(); loop++){
-                     if (!Username.getText().equals(datos.getUsernames().get(loop))){
-                    } else if (loop+1==datos.getUsernames().size()){
-                        datos.getUsernames().set(gamble, Username.getText());
-                        datos.setUser(Username.getText());
-                        datos.getPasses().set(gamble, Pass.getText());
+        } else if ((e.getSource() == concretar || e.getSource() == regresar) && regresar.getText().equals("Delete account") && !datos.getUser("").equals("Guest")) {
+            String ActPass = JOptionPane.showInputDialog(Canvas, "Input your current password");
+            if (datos.getUser("").equals(datos.getUsernames().get(gamble)) && datos.getPasses().get(gamble).equals(ActPass)) {
+                if (e.getSource() == regresar) {
+                    datos.getUsernames().remove(gamble);
+                    datos.getMirrorUsernames().remove(gamble);
+                    datos.getPasses().remove(gamble);
+                    datos.getWins().remove(gamble);
+                    datos.getLosses().remove(gamble);
+                    datos.getMirrorPuntos().remove(gamble);
+                    datos.getPuntos().remove(gamble);
+                    datos.getHeroes().remove(gamble);
+                    datos.getVillanos().remove(gamble);
 
-                        change.setVisible(true);
-                        Pass.setEditable(false);
-                        Pass.setForeground(Color.gray);
-                        Username.setEditable(false);
-                        Username.setForeground(Color.gray);
-                        regresar.setVisible(false);
-                        concretar.setVisible(false);
-                    }
+                    datos.setUser("Guest");
+                    Canvas.dispose();
+                    new MainScene(datos).setVisible(false);
+                } else if (e.getSource() == concretar) {
+                    concretar.setText("Save changes");
+                    regresar.setText("Cancel changes");
+
+                    Username.setForeground(Color.black);
+                    Pass.setForeground(Color.black);
+
+                    Username.setEditable(true);
+                    Pass.setEditable(true);
                 }
-            } else if (e.getSource()==regresar){
+            }
+        } else if ((e.getSource() == concretar || e.getSource() == regresar) && regresar.getText().equals("Cancel changes") && !datos.getUser("").equals("Guest") && Pass.getText().length() == 5) {
+            if (e.getSource() == concretar) {
+                datos.getUsernames().set(gamble, Username.getText());
+                datos.getPasses().set(gamble, Pass.getText());
+            } else if (e.getSource() == regresar) {
                 Username.setText(datos.getUsernames().get(gamble));
                 Pass.setText(datos.getPasses().get(gamble));
-                datos.setUser(Username.getText());
-                
-                change.setVisible(true);
-                Pass.setEditable(false);
-                Pass.setForeground(Color.gray);
-                Username.setEditable(false);
-                Username.setForeground(Color.gray);
-                regresar.setVisible(false);
-                concretar.setVisible(false);
-            } 
-        }
-        if (e.getSource()==DelAc && (change.isEnabled()==true||regresar.isEnabled()==true||concretar.isEnabled()==true) && !Username.getText().equals("Guest")){
-                change.setEnabled(false);
-                regresar.setEnabled(false);
-                concretar.setEnabled(false);
-                
-                Username.setEditable(false); 
-                Username.setText("Enter your password to delete");
-                Pass.setText(null);
-                Pass.setEditable(true);
-            } else if (e.getSource()==DelAc && (change.isEnabled()==false||regresar.isEnabled()==false||concretar.isEnabled()==false) && (Pass.getText().equals(datos.getPasses().get(gamble)))){
-                datos.getTaken().add(datos.getUsernames().get(gamble));
-                
-                datos.getMirrorUsernames().remove(gamble);
-                datos.getUsernames().remove(gamble);
-                datos.getPasses().remove(gamble);
-                datos.getWins().remove(gamble);
-                datos.getLosses().remove(gamble);
-                datos.getPuntos().remove(gamble);
-                datos.getMirrorPuntos().remove(gamble);
-                datos.getHeroes().remove(gamble);
-                datos.getVillanos().remove(gamble);
-                datos.setUser("Guest");
-                
-                Canvas.dispose();
-                new MainScene(datos).setVisible(false);
             }
-        
+            concretar.setText("Change data");
+            regresar.setText("Delete account");
+
+            Username.setForeground(Color.gray);
+            Pass.setForeground(Color.gray);
+
+            Username.setEditable(false);
+            Pass.setEditable(false);
+        }
     }
-    
 }

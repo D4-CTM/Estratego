@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="34">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="43">
+        <file>
+            <url>src/GUI/MarvelTactica/NeoMap.java</url>
+            <bookmark id="41">
+                <name/>
+                <line>198</line>
+                <key/>
+            </bookmark>
+            <bookmark id="39">
+                <name/>
+                <line>353</line>
+                <key/>
+            </bookmark>
+            <bookmark id="38">
+                <name/>
+                <line>618</line>
+                <key/>
+            </bookmark>
+            <bookmark id="40">
+                <name/>
+                <line>682</line>
+                <key/>
+            </bookmark>
+            <bookmark id="42">
+                <name/>
+                <line>888</line>
+                <key/>
+            </bookmark>
+        </file>
         <file>
             <url>src/GUI/MarvelTactica/Map.java</url>
             <bookmark id="11">
@@ -58,7 +86,7 @@
             <url>src/GUI/MarvelTactica/LogScene.java</url>
             <bookmark id="2">
                 <name/>
-                <line>126</line>
+                <line>136</line>
                 <key/>
             </bookmark>
         </file>
@@ -74,12 +102,17 @@
             <url>src/GUI/MarvelTactica/MainScene.java</url>
             <bookmark id="1">
                 <name/>
-                <line>174</line>
+                <line>177</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/projecto2_grupo2/Projecto2_Grupo2.java</file>
+            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/Stats.java</file>
+            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/NeoMap.java</file>
+            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/LogoReg.java</file>
+        </group>
     </open-files>
 </project-private>

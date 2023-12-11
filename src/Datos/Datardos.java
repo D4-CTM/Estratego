@@ -5,6 +5,20 @@ import java.util.ArrayList;
 public class Datardos {
 
     /**
+     * @return the HTP
+     */
+    public boolean isHTP() {
+        return HTP;
+    }
+
+    /**
+     * @param HTP the HTP to set
+     */
+    public void setHTP(boolean HTP) {
+        this.HTP = HTP;
+    }
+
+    /**
      * @return the log
      */
     public ArrayList <String> getLog() {
@@ -243,10 +257,11 @@ public class Datardos {
     public static String user;
     public static String user2;
     public static String faltante;
-    public static boolean practice;
+    public static boolean HTP; //How to play
+    public static boolean practice; //you enter pratice mode
     public static boolean selected; //Usado para identificar el bando (true si el user1 eligio ser un heroe o villano)
     public static boolean change;   //Usado para separar el log in del primer player del segundo y no manda accidentalmente al pibe a una match
-    
+        
     /**
      * @param string the value of string
      * @return the java.lang.String

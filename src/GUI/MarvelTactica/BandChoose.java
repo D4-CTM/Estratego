@@ -7,13 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BandChoose extends JFrame implements ActionListener{
@@ -25,7 +24,7 @@ public class BandChoose extends JFrame implements ActionListener{
     int gamble, change;
     
     JFrame Canva;
-    JButton Regresar, Heroes, Villains;
+    JButton Regresar, Heroes, Villains, Tutorial, HI, VI;
     BufferedImage SuperHeroes, SuperVillains;
     private void Elector(){
         try {
@@ -44,7 +43,7 @@ public class BandChoose extends JFrame implements ActionListener{
         Canva = new JFrame();
                 
         Canva.setIconImage(new javax.swing.ImageIcon(getClass().getResource("Icons\\Icon.png")).getImage());
-        Canva.setSize(400,325);
+        Canva.setSize(400,385);
         Canva.setResizable(false);
         Canva.setTitle("Choose your side");
         Canva.setLocationRelativeTo(null);
@@ -53,7 +52,7 @@ public class BandChoose extends JFrame implements ActionListener{
         JPanel Caja = new JPanel();
         
         Caja.setLayout(null);
-        Caja.setSize(400,325);
+        Caja.setSize(400,385);
         Caja.setBackground(Color.black); 
         //Boton regresar
         Regresar = new JButton();
@@ -76,8 +75,9 @@ public class BandChoose extends JFrame implements ActionListener{
         //Hero's side
         JPanel Hero = new JPanel();
         Heroes = new JButton();
-        JLabel HI = new JLabel(new ImageIcon(SuperHeroes));
+        HI = new JButton(new ImageIcon(SuperHeroes));
         
+        HI.addActionListener(this);
         HI.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 3));
         HI.setBounds(0, 0, 175, 180);
         
@@ -96,8 +96,9 @@ public class BandChoose extends JFrame implements ActionListener{
         //Villains's side
         JPanel villano = new JPanel();
         Villains = new JButton();
-        JLabel VI = new JLabel(new ImageIcon(SuperVillains));
+        VI = new JButton(new ImageIcon(SuperVillains));
         
+        VI.addActionListener(this);
         VI.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 3));
         VI.setBounds(0, 0, 175, 180);
         
@@ -113,47 +114,71 @@ public class BandChoose extends JFrame implements ActionListener{
         villano.setLayout(null);
         villano.add(VI);
         villano.add(Villains);
+        //How to play
+        Tutorial = new JButton();
+        
+        Tutorial.addActionListener(this);
+        Tutorial.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 3));
+        Tutorial.setFont(new Font("Lucida Bright",3,24));
+        Tutorial.setForeground(new Color(239, 243, 130));
+        Tutorial.setBounds(10,290,365, 40);
+        Tutorial.setBackground(new Color(155,0,0));
+        Tutorial.setText("Solo play");
         //Adicion de implementos
         Canva.add(Caja);
         Caja.add(Regresar);
         Caja.add(UpperText);
         Caja.add(Hero);
         Caja.add(villano);
+        Caja.add(Tutorial);
         
         Canva.setVisible(true);
     }
     
     @Override
-    public void actionPerformed(ActionEvent e) { 
-        if (e.getSource()==Villains){
+    public void actionPerformed(ActionEvent e) {
+        datos.setHTP(false);
+        if (e.getSource()==Villains||e.getSource()==VI){
             Canva.dispose();
             datos.setSelected(false);
             datos.setChange(true);
             if (datos.isPractice()==true){
                 datos.setUser2("Guest");
                 new NeoMap(datos).setVisible(false);
+                JOptionPane.showMessageDialog(Canva, "The first move will always be of the Heroes, succeeded by the villains. On practice\nmode the turns turns are represented with the yellow border around the troops");
             } else{
                 change = datos.getVillanos().get(gamble);
                 change++;
                 datos.getVillanos().set(gamble, change);
                 new LogScene(datos).setVisible(false);
+                JOptionPane.showMessageDialog(Canva, "You need to log into the account of player 2");
             }
         }
         
-        if (e.getSource()==Heroes){
+        if (e.getSource()==Heroes||e.getSource()==HI){
             Canva.dispose();
             datos.setSelected(true); 
             datos.setChange(true);
             if (datos.isPractice()==true){
-                datos.setPractice(true);
                 datos.setUser2("Guest");
                 new NeoMap(datos).setVisible(false);
+                JOptionPane.showMessageDialog(Canva, "The first move will always be of the Heroes, succeeded by the villains. On practice\nmode the turns turns are represented with the yellow border around the troops, click\none of this yellow troops to move it.");
             } else {                
                 change = datos.getHeroes().get(gamble);
                 change++;
                 datos.getHeroes().set(gamble, change);
                 new LogScene(datos).setVisible(false);
+                JOptionPane.showMessageDialog(Canva, "You need to log into the account of player 2");
             }
+        }
+        
+        if (e.getSource()==Tutorial){
+            Canva.dispose();
+            datos.setHTP(true);
+            datos.setUser2("Guest");
+            new NeoMap(datos).setVisible(false);
+            if (datos.isPractice())
+            JOptionPane.showMessageDialog(Canva, "The first move will always be of the Heroes, succeeded by the villains. On practice\nmode the turns turns are represented with the yellow border around the troops");
         }
         
         if (e.getSource()==Regresar){

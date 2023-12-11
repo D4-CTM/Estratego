@@ -1,7 +1,6 @@
 package GUI.MarvelTactica;
 
 import Datos.Datardos;
-import Pop_Ups.RegSuggestion;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -11,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -28,8 +28,6 @@ public class RegScene extends JFrame implements ActionListener{
     JButton BTNRegister, BTNCancel, BTNReveal;
     
     private void Registration(){  
-        if (datos.getUser("").equals("Guest"))
-            new RegSuggestion().setVisible(false);
         //JFrame        
         Canva = new JFrame();
         
@@ -41,7 +39,10 @@ public class RegScene extends JFrame implements ActionListener{
         Canva.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         //Main Panel
         JPanel Caja = new JPanel();
+        JLabel BCKG = new JLabel();
         
+        BCKG.setIcon(new ImageIcon(getClass().getResource("Icons\\Reg.png")));
+        BCKG.setBounds(0, 0, 500, 260);
         Caja.setLayout(null);
         Caja.setSize(500,310);
         Caja.setBackground(Color.black);
@@ -81,18 +82,26 @@ public class RegScene extends JFrame implements ActionListener{
         BTNReveal.setIcon(Eye);
         BTNReveal.addActionListener(this);
         BTNReveal.setBounds(425,115,35,35);
+        BTNReveal.setBackground(new Color(155,0,0));
+        BTNReveal.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow,2));
         //Boton registrar
         BTNRegister = new JButton();
         
         BTNRegister.addActionListener(this);
         BTNRegister.setText("Create account");
+        BTNRegister.setForeground(new Color(239, 243, 130));
+        BTNRegister.setBackground(new Color(155,0,0));
         BTNRegister.setFont(new Font("Lucida Bright",3,20));
         BTNRegister.setBounds(25,165,210,40);
+        BTNRegister.setBorder(javax.swing.BorderFactory.createLineBorder(Color.YELLOW, 4));
         //Boton cancelar
         BTNCancel = new JButton();
         
         BTNCancel.addActionListener(this);
         BTNCancel.setText("cancel");
+        BTNCancel.setForeground(new Color(239, 243, 130));
+        BTNCancel.setBackground(new Color(155,0,0));
+        BTNCancel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.yellow, 4));
         BTNCancel.setFont(new Font("Lucida Bright",3,22));
         BTNCancel.setBounds(250,165,210,40);
         //adicion de complementos
@@ -105,6 +114,7 @@ public class RegScene extends JFrame implements ActionListener{
         Caja.add(BTNReveal);
         Caja.add(BTNRegister);
         Caja.add(BTNCancel);
+        Caja.add(BCKG);
         
         Canva.setVisible(true);
     }
@@ -127,7 +137,7 @@ public class RegScene extends JFrame implements ActionListener{
         }
         
         if (e.getSource() == BTNRegister){                  
-            if (Pass.getText().length() >= 5 && Pass.getText().matches("[\\d\\w]+") && Pass.getText().charAt(0) == Pass.getText().toUpperCase().charAt(0) && Username.getText().isBlank() == false){
+            if (Pass.getText().length() == 5 && Pass.getText().matches("[\\d\\w]+") && Pass.getText().charAt(0) == Pass.getText().toUpperCase().charAt(0) && Username.getText().isBlank() == false){
                 int tamagno = datos.getUsernames().size();
                 for (int loop = 0; loop < tamagno; loop++){
                     if (!Username.getText().equals(datos.getUsernames().get(loop)) && (loop == datos.getUsernames().size() - 1)){
@@ -147,9 +157,10 @@ public class RegScene extends JFrame implements ActionListener{
                         new MainScene(datos).setVisible(false);
                     } 
                 }
-            } else new RegSuggestion().setVisible(false);
+            } else JOptionPane.showMessageDialog(Canva, "\t\nAccount registration parameters\nTo create the account is needed:\n- Everything to be filled\nThe password should:\n- Contain only letters and numbers\n- Have a length of 5 characters\n- Start with an upper case (if it starts with a letter)");
             
         }
     }
     
 }
+
