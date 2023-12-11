@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="43">
-        <file>
-            <url>src/GUI/MarvelTactica/NeoMap.java</url>
-            <bookmark id="41">
-                <name/>
-                <line>198</line>
-                <key/>
-            </bookmark>
-            <bookmark id="39">
-                <name/>
-                <line>353</line>
-                <key/>
-            </bookmark>
-            <bookmark id="38">
-                <name/>
-                <line>618</line>
-                <key/>
-            </bookmark>
-            <bookmark id="40">
-                <name/>
-                <line>682</line>
-                <key/>
-            </bookmark>
-            <bookmark id="42">
-                <name/>
-                <line>888</line>
-                <key/>
-            </bookmark>
-        </file>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="34">
         <file>
             <url>src/GUI/MarvelTactica/Map.java</url>
             <bookmark id="11">
@@ -86,7 +58,7 @@
             <url>src/GUI/MarvelTactica/LogScene.java</url>
             <bookmark id="2">
                 <name/>
-                <line>136</line>
+                <line>126</line>
                 <key/>
             </bookmark>
         </file>
@@ -102,17 +74,25 @@
             <url>src/GUI/MarvelTactica/MainScene.java</url>
             <bookmark id="1">
                 <name/>
-                <line>177</line>
+                <line>174</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/projecto2_grupo2/Projecto2_Grupo2.java</file>
-            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/Stats.java</file>
-            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/NeoMap.java</file>
-            <file>file:/C:/Users/josue/Dropbox/PC/Documents/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/LogoReg.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/Datos/Datardos.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/Pop_Ups/Icon.png</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/NeoMap.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/projecto2_grupo2/Projecto2_Grupo2.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/BandChoose.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/LogScene.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/Pop_Ups/Incomplete_Data.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/RegScene.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/Pop_Ups/RegSuggestion.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/MainScene.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/LogoReg.java</file>
+            <file>file:/C:/Users/briad/OneDrive/Documentos/NetBeansProjects/Projecto2_Grupo2/src/GUI/MarvelTactica/Datardos.java</file>
         </group>
     </open-files>
 </project-private>
